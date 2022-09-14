@@ -15,10 +15,11 @@ while len(guessed_states)<50:
     answer_state=screen.textinput(title=f"{len(guessed_states)/50}",prompt="what is the next state?").title()
     #answer_state.title()
     if answer_state=="Exit":
-        missing=[]
-        for state in states:
-            if state not in guessed_states:
-                missing.append(state)
+        # missing=[]
+        # for state in states:
+        #     if state not in guessed_states:
+        #         missing.append(state)
+        missing=[state for state in states if state not in guessed_states ]
         new_data=pd.DataFrame(missing)
         new_data.to_csv("missing_states.csv")
         break
